@@ -17,4 +17,7 @@ def dashboard():
     return render_template('dashboard.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Ambil port dari environment variable (Railway yang menentukan port-nya)
+    port = int(os.environ.get("PORT", 5000))
+    # Host harus 0.0.0.0 agar bisa diakses dari luar container
+    app.run(host='0.0.0.0', port=port)
